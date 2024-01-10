@@ -12,11 +12,13 @@
 <body>
     <main>
         <form action="index.php" method="GET">
-            Email: <input type="text" name="email">
-            <input type="submit">
+            <div class="text-center mt-3 mb-3">
+                Email: <input type="text" name="email">
+                <input type="submit">
+            </div>
         </form>
         <?php
-        include __DIR__."/functions.php"
+        include __DIR__ . "/functions.php"
         ?>
     </main>
 </body>
