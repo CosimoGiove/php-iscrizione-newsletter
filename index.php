@@ -12,15 +12,32 @@
 <body>
     <main>
         <form action="index.php" method="GET">
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            Email: <input type="text" name="email">
+            <input type="submit">
         </form>
-    </main>
+        <?php
+        function validateEmail($email)
+        {
+            if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
 
+        if (isset($_GET['email'])) {
+            $email = $_GET['email'];
+            if (validateEmail($email)) {
+                echo "<div class='alert alert-success'>l'indirizzo email contiene un punto e una chiocciola $email</div>";
+              
+            } else {
+                echo "<div class='alert alert-warning'>
+                 errore, l'email non contiene un punto è una chiocciola $email
+              </div>";
+            }
+        }
+        ?>
+    </main>
 </body>
 
 </html>
